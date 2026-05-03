@@ -1,4 +1,5 @@
 import React from 'react';
+import LatestProduct from './LatestProducts/LatestProduct';
 
 const Home = () => {
     return (
@@ -61,6 +62,10 @@ const Home = () => {
                     <p className="text-gray-600 text-sm mt-2">Quick response and smooth service process.</p>
                 </div>
 
+            </div>
+            {/* Latest Products */}
+            <div>
+                 <LatestProduct></LatestProduct>
             </div>
 
         </div>
