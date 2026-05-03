@@ -35,7 +35,7 @@ const Home = () => {
                 {/* IMAGE SECTION */}
                 <div className="flex-1">
                     <img
-                        src="/src/assets/home-banner.jpg"
+                        src="/src/assets/banner.jpg"
                         alt="building"
                         className="w-full rounded-2xl shadow-2xl object-cover"
                     />
