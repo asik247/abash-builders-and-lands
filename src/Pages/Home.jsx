@@ -18,17 +18,17 @@ const Home = () => {
                     </h1>
 
                     <p className="text-gray-600 text-sm sm:text-base">
-                        We provide trusted lands, property solutions and modern building services.
-                        Your dream home is just one step away with us.
+                        আমরা নির্ভরযোগ্য জমি, সম্পত্তি সমাধান এবং আধুনিক নির্মাণ সেবা প্রদান করি।
+                        আপনার স্বপ্নের বাড়ি আমাদের সাথে মাত্র এক ধাপ দূরে।
                     </p>
 
                     <div className="flex gap-4">
                         <button className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 text-white font-medium shadow-lg hover:scale-105 transition">
-                            Explore Projects
+                            প্রজেক্ট দেখুন
                         </button>
 
                         <button className="px-6 py-3 rounded-full border border-orange-400 text-orange-500 font-medium hover:bg-orange-500 hover:text-white transition">
-                            Contact Us
+                            যোগাযোগ করুন
                         </button>
                     </div>
                 </div>
@@ -48,24 +48,24 @@ const Home = () => {
             <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-                    <h3 className="text-xl font-bold text-orange-500">Trusted Property</h3>
-                    <p className="text-gray-600 text-sm mt-2">Verified land & property deals you can trust.</p>
+                    <h3 className="text-xl font-bold text-orange-500">বিশ্বাসযোগ্য সম্পত্তি</h3>
+                    <p className="text-gray-600 text-sm mt-2">যাচাইকৃত জমি ও সম্পত্তির ডিল যা আপনি বিশ্বাস করতে পারেন।</p>
                 </div>
 
                 <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-                    <h3 className="text-xl font-bold text-orange-500">Modern Design</h3>
-                    <p className="text-gray-600 text-sm mt-2">Smart and modern architectural solutions.</p>
+                    <h3 className="text-xl font-bold text-orange-500">আধুনিক ডিজাইন</h3>
+                    <p className="text-gray-600 text-sm mt-2">স্মার্ট এবং আধুনিক স্থাপত্য সমাধান।</p>
                 </div>
 
                 <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-                    <h3 className="text-xl font-bold text-orange-500">Fast Service</h3>
-                    <p className="text-gray-600 text-sm mt-2">Quick response and smooth service process.</p>
+                    <h3 className="text-xl font-bold text-orange-500">দ্রুত সেবা</h3>
+                    <p className="text-gray-600 text-sm mt-2">দ্রুত সাড়া এবং সহজ সেবা প্রক্রিয়া।</p>
                 </div>
 
             </div>
             {/* Latest Products */}
             <div>
-                 <LatestProduct></LatestProduct>
+                <LatestProduct></LatestProduct>
             </div>
 
         </div>
