@@ -2,80 +2,74 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
 const STATUS_MAP = {
-    available: { label: 'পাওয়া যাচ্ছে', color: '#16a34a', bg: 'rgba(22,163,74,0.1)', dot: '#16a34a' },
-    booked: { label: 'বুকড', color: '#d97706', bg: 'rgba(217,119,6,0.1)', dot: '#d97706' },
-    sold: { label: 'বিক্রিত', color: '#dc2626', bg: 'rgba(220,38,38,0.1)', dot: '#dc2626' },
+    available: { label: 'Available', color: '#16a34a' },
+    booked: { label: 'Booked', color: '#d97706' },
+    sold: { label: 'Sold', color: '#dc2626' },
 };
 
-const TYPE_ICONS = {
-    'আবাসিক প্লট': '🏘',
-    'বাণিজ্যিক প্লট': '🏢',
-    'ভিলা': '🏡',
-    'ফ্ল্যাট': '🏗',
-    'শিল্প প্লট': '🏭',
-};
-
-const placeholderSrc = (id) =>
-    `https://placehold.co/400x220/fef3c7/d97706?text=Plot+${id}`;
-
-const PropertyCard = ({ data, index }) => {
+const PropertyCard = ({ data }) => {
     const status = STATUS_MAP[data.status] || STATUS_MAP.available;
-    const typeIcon = TYPE_ICONS[data.type] || '🏠';
 
     return (
-        <div className="prop-card" style={{ animationDelay: `${index * 0.1}s` }}>
+        <div className="group bg-white rounded-3xl overflow-hidden shadow-md border border-orange-100 hover:shadow-2xl hover:-translate-y-2 transition duration-300">
 
             {/* IMAGE */}
-            <div className="card-img-wrap">
+            <div className="relative h-52 overflow-hidden">
+
                 <img
                     src={data.image}
                     alt={data.title}
-                    loading="lazy"
-                    className="card-img"
-                    onError={(e) => (e.target.src = placeholderSrc(data.id))}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    onError={(e) => (e.target.src = 'https://placehold.co/400x250')}
                 />
 
-                <div className="status-badge" style={{ background: status.bg, color: status.color }}>
-                    <span className="status-dot" style={{ background: status.dot }} />
+                {/* STATUS */}
+                <span
+                    className="absolute top-3 right-3 text-xs px-3 py-1 rounded-full text-white"
+                    style={{ backgroundColor: status.color }}
+                >
                     {status.label}
-                </div>
+                </span>
 
-                <div className="type-chip">
-                    {typeIcon} {data.type}
-                </div>
             </div>
 
             {/* BODY */}
-            <div className="card-body">
+            <div className="p-5 space-y-3">
 
-                <div className="card-title-row">
-                    <h3 className="card-title">{data.title}</h3>
-                    {data.legal && <span className="legal-tag">✔ আইনি</span>}
-                </div>
+                <h3 className="font-bold text-gray-800 text-lg">
+                    {data.title}
+                </h3>
 
-                <div className="card-location">📍 {data.location}</div>
+                <p className="text-gray-500 text-sm">
+                    📍 {data.location}
+                </p>
 
-                <div className="card-meta">
+                {/* META */}
+                <div className="flex justify-between text-xs text-gray-500">
                     <span>📐 {data.area}</span>
                     <span>🛣 {data.road}</span>
                     <span>🧭 {data.facing}</span>
                 </div>
 
-                <div className="card-features">
-                    {data.features.slice(0, 3).map((f, i) => (
-                        <span key={i} className="feature-tag">{f}</span>
-                    ))}
-                </div>
+                {/* PRICE + BUTTON */}
+                <div className="flex items-center justify-between pt-2">
 
-                <div className="card-footer">
-                    <div>
-                        <div className="price-label-sm">মূল্য</div>
-                        <div className="price-value">{data.priceLabel}</div>
+                    <div className="text-orange-500 font-bold">
+                        {data.priceLabel}
                     </div>
 
-                    <button className="card-cta" disabled={data.status === 'sold'}>
-                        {data.status === 'sold' ? 'বিক্রিত' : 'যোগাযোগ করুন'}
+                    <button
+                        disabled={data.status === 'sold'}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition
+                        ${
+                            data.status === 'sold'
+                                ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-orange-500 to-amber-400 text-white hover:scale-105'
+                        }`}
+                    >
+                        {data.status === 'sold' ? 'Sold' : 'Contact'}
                     </button>
+
                 </div>
 
             </div>
@@ -98,193 +92,42 @@ const LatestProduct = () => {
     }, []);
 
     return (
-        <>
-            <style>{`
-        :root {
-          --gold: #d97706;
-          --gold-light: #fbbf24;
-          --cream: #fffbf2;
-          --ink: #1c1008;
-          --warm-gray: #78716c;
-          --border: rgba(217,119,6,0.15);
-        }
+        <section className="py-16 px-4 max-w-6xl mx-auto">
 
-        .lp-section {
-          background: var(--cream);
-          padding: 5rem 6vw;
-          font-family: sans-serif;
-        }
-
-        /* HEADER */
-        .lp-header {
-          text-align: center;
-          margin-bottom: 3rem;
-        }
-
-        .lp-title {
-          font-size: 2rem;
-          font-weight: 800;
-          color: var(--ink);
-        }
-
-        .lp-title span {
-          color: var(--gold);
-        }
-
-        .lp-sub {
-          color: var(--warm-gray);
-          margin-top: 0.5rem;
-        }
-
-        /* GRID 🔥 RESPONSIVE FIX */
-        .prop-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.6rem;
-        }
-
-        /* TABLET */
-        @media (max-width: 1024px) {
-          .prop-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        /* MOBILE */
-        @media (max-width: 600px) {
-          .prop-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        /* CARD */
-        .prop-card {
-          background: #fff;
-          border-radius: 18px;
-          overflow: hidden;
-          border: 1px solid var(--border);
-          transition: 0.3s;
-        }
-
-        .prop-card:hover {
-          transform: translateY(-6px);
-        }
-
-        .card-img-wrap {
-          position: relative;
-          height: 200px;
-        }
-
-        .card-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .status-badge {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          padding: 4px 10px;
-          border-radius: 999px;
-          font-size: 12px;
-        }
-
-        .type-chip {
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          background: rgba(0,0,0,0.6);
-          color: #fff;
-          padding: 4px 10px;
-          border-radius: 999px;
-          font-size: 12px;
-        }
-
-        .card-body {
-          padding: 1rem;
-        }
-
-        .card-title {
-          font-size: 1rem;
-          font-weight: 700;
-        }
-
-        .card-meta {
-          display: flex;
-          gap: 10px;
-          font-size: 12px;
-          margin-top: 6px;
-          color: var(--warm-gray);
-        }
-
-        .feature-tag {
-          font-size: 11px;
-          padding: 3px 8px;
-          background: rgba(217,119,6,0.1);
-          border-radius: 6px;
-          margin-right: 5px;
-        }
-
-        .card-footer {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 12px;
-        }
-
-        .price-value {
-          font-weight: bold;
-          color: var(--gold);
-        }
-
-        .card-cta {
-          background: var(--gold);
-          color: #fff;
-          border: none;
-          padding: 6px 12px;
-          border-radius: 999px;
-          cursor: pointer;
-        }
-
-        .card-cta:disabled {
-          background: #ccc;
-        }
-      `}</style>
-
-            <section className="lp-section">
-
-                <div className="lp-header">
-                    <h2 className="lp-title">
-                        আমাদের <span>সর্বশেষ প্লট</span>
-                    </h2>
-                    <p className="lp-sub">সেরা লোকেশনে প্রজেক্ট</p>
-                </div>
-
-                {loading ? (
-                    <p style={{ textAlign: 'center' }}>Loading...</p>
-                ) : (
-                    <div className="prop-grid">
-                        {datas.map((data, index) => (
-                            <PropertyCard key={data.id} data={data} index={index} />
-                        ))}
-                    </div>
-                )}
-
-            </section>
-            {/* View All Product */}
-
-            {/* View All Product */}
-
-            <div className="flex justify-center items-center my-16 py-12 bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 border-y border-amber-200">
-                <Link
-                    to="/products"
-                    className="relative overflow-hidden px-10 py-4 rounded-full text-white font-bold text-lg bg-gradient-to-r from-amber-600 to-yellow-400 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                >
-                    সকল প্রজেক্ট দেখুন →
-                </Link>
+            {/* TITLE */}
+            <div className="text-center mb-10">
+                <h2 className="text-3xl font-extrabold">
+                    Latest <span className="text-orange-500">Projects</span>
+                </h2>
+                <p className="text-gray-500 text-sm mt-2">
+                    Premium plots in prime locations
+                </p>
             </div>
 
-        </>
+            {/* GRID */}
+            {loading ? (
+                <p className="text-center text-gray-500">Loading...</p>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {datas.map((data) => (
+                        <PropertyCard key={data.id} data={data} />
+                    ))}
+                </div>
+            )}
+
+            {/* CTA */}
+            <div className="flex justify-center mt-14">
+
+                <Link
+                    to="/products"
+                    className="px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold shadow-lg hover:scale-105 transition"
+                >
+                    View All Projects →
+                </Link>
+
+            </div>
+
+        </section>
     );
 };
 
