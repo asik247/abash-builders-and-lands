@@ -114,19 +114,82 @@ const About = () => {
             </section>
 
             {/* CONTACT */}
-            <section className="max-w-6xl mx-auto px-4 py-16 text-center">
+            {/* WHY CHOOSE US */}
+            <section className="max-w-6xl mx-auto px-4 py-16">
 
-                <h2 className="text-2xl font-bold mb-6">যোগাযোগ করুন</h2>
+                <div className="text-center mb-10">
+                    <h2 className="text-3xl font-bold">
+                        কেন আমাদের নির্বাচন করবেন?
+                    </h2>
 
-                <div className="bg-gradient-to-r from-orange-500 to-amber-400 text-white p-10 rounded-2xl shadow-lg space-y-3">
+                    <p className="text-gray-600 mt-3">
+                        বিশ্বস্ততা, নিরাপত্তা এবং আধুনিক সেবার সমন্বয়
+                    </p>
+                </div>
 
-                    <p>📞 01575003388</p>
-                    <p>📍 মডার্ন প্লাজা, সাভার, ঢাকা</p>
-                    <p>🕐 সকাল ৯টা – রাত ৭টা</p>
+                <div className="grid md:grid-cols-3 gap-6">
 
-                    <Link to={'/contact'}> <button className="mt-4 bg-white text-orange-600 px-6 py-2 rounded-full font-semibold hover:scale-105 transition">
-                        Contact Form
-                    </button></Link>
+                    <div className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition">
+                        <div className="text-4xl mb-4">✅</div>
+
+                        <h3 className="font-bold text-lg mb-2">
+                            ১০০% আইনি নিরাপত্তা
+                        </h3>
+
+                        <p className="text-gray-600 text-sm">
+                            সকল জমি যাচাইকৃত এবং সম্পূর্ণ আইনি প্রক্রিয়ায় পরিচালিত।
+                        </p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition">
+                        <div className="text-4xl mb-4">🏗️</div>
+
+                        <h3 className="font-bold text-lg mb-2">
+                            আধুনিক পরিকল্পনা
+                        </h3>
+
+                        <p className="text-gray-600 text-sm">
+                            উন্নত ডিজাইন ও ভবিষ্যৎ উপযোগী নির্মাণ পরিকল্পনা।
+                        </p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition">
+                        <div className="text-4xl mb-4">🤝</div>
+
+                        <h3 className="font-bold text-lg mb-2">
+                            বিশ্বস্ত সাপোর্ট
+                        </h3>
+
+                        <p className="text-gray-600 text-sm">
+                            ক্রয়ের আগে ও পরে সম্পূর্ণ সহযোগিতা প্রদান করি।
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+            {/* CTA */}
+            <section className="py-20">
+
+                <div className="max-w-5xl mx-auto px-4">
+
+                    <div className="bg-gradient-to-r from-orange-500 to-amber-400 rounded-[40px] p-10 md:p-16 text-center text-white shadow-2xl">
+
+                        <h2 className="text-3xl md:text-4xl font-extrabold leading-tight">
+                            আপনার স্বপ্নের জমি খুঁজছেন?
+                        </h2>
+
+                        <p className="mt-4 text-white/90 max-w-2xl mx-auto">
+                            আজই আমাদের সাথে যোগাযোগ করুন এবং নিরাপদ বিনিয়োগ নিশ্চিত করুন।
+                        </p>
+
+                        <Link to={'/contact'}>
+                            <button className="mt-8 bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:scale-105 transition">
+                                যোগাযোগ করুন
+                            </button>
+                        </Link>
+
+                    </div>
 
                 </div>
 
