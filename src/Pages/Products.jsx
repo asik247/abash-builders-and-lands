@@ -117,9 +117,8 @@ const Products = () => {
                 </h2>
 
                 <p className="text-gray-500 text-sm mt-2">
-                    Premium verified plots in prime locations
+                    প্রিমিয়াম যাচাইকৃত প্লট, সেরা লোকেশনে অবস্থিত
                 </p>
-
             </div>
 
             {/* GRID */}
