@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-
+import useAuth from '../Hooks/useAuth';
 const Registation = () => {
+   const info = useAuth()
+   console.log(info);
+    
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-100 px-4">
 
