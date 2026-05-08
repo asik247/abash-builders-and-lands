@@ -1,10 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router';
 import useAuth from '../Hooks/useAuth';
+import { updateProfile } from 'firebase/auth';
 const Registation = () => {
-   const info = useAuth()
-   console.log(info);
-    
+    const { registerUser } = useAuth()
+    const handleRegister = (e) => {
+        e.preventDefault()
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const confarmPassword = e.target.confarmPassword.value;
+        const newUser = {
+            displayName: name,
+            photoURL:photo
+    }
+        registerUser(email, password)
+            .then(res => {
+                console.log(res.user);
+                updateProfile(res.user,newUser)
+            }).catch(err => {
+                console.log(err.message);
+            })
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-100 px-4">
 
@@ -20,28 +39,38 @@ const Registation = () => {
                 </p>
 
                 {/* Form */}
-                <form className="space-y-4">
+                <form onSubmit={handleRegister} className="space-y-4">
 
                     <input
                         type="text"
+                        name='name'
                         placeholder="আপনার নাম"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-amber-500 outline-none"
+                    />
+                    <input
+                        type="text"
+                        name="photo"
+                        placeholder="ছবির লিংক দিন"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-amber-500 outline-none"
                     />
 
                     <input
                         type="email"
+                        name='email'
                         placeholder="ইমেইল"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-amber-500 outline-none"
                     />
 
                     <input
                         type="password"
+                        name='password'
                         placeholder="পাসওয়ার্ড"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-amber-500 outline-none"
                     />
 
                     <input
                         type="password"
+                        name='confarmPassword'
                         placeholder="কনফার্ম পাসওয়ার্ড"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-amber-500 outline-none"
                     />
