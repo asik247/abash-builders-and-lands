@@ -1,35 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 import { updateProfile } from 'firebase/auth';
+
 const Registation = () => {
-    const { registerUser } = useAuth()
+    const { registerUser } = useAuth();
+
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+
     const handleRegister = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        setSuccess('');
+        setError('');
+
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confarmPassword = e.target.confarmPassword.value;
+
+        // 🔒 Password validation (regex)
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+            setError("Password must be 6+ chars, include uppercase, lowercase & number");
+            return;
+        }
+
+        if (password !== confarmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
         const newUser = {
             displayName: name,
-            photoURL:photo
-    }
+            photoURL: photo
+        };
+
         registerUser(email, password)
             .then(res => {
                 console.log(res.user);
-                updateProfile(res.user,newUser)
-            }).catch(err => {
-                console.log(err.message);
+
+                updateProfile(res.user, newUser);
+
+                setSuccess("Registration successful 🎉");
+                setError("");
+
+                e.target.reset();
             })
-    }
+            .catch(err => {
+                setError(err.message);
+                setSuccess("");
+            });
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-100 px-4">
 
             <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-amber-100 p-8">
 
-                {/* Title */}
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">
                     রেজিস্ট্রেশন করুন
                 </h2>
@@ -38,7 +69,20 @@ const Registation = () => {
                     নতুন একাউন্ট তৈরি করুন
                 </p>
 
-                {/* Form */}
+                {/* ✅ Success Message */}
+                {success && (
+                    <p className="text-green-600 text-sm text-center mb-3 font-medium">
+                        {success}
+                    </p>
+                )}
+
+                {/* ❌ Error Message */}
+                {error && (
+                    <p className="text-red-500 text-sm text-center mb-3 font-medium">
+                        {error}
+                    </p>
+                )}
+
                 <form onSubmit={handleRegister} className="space-y-4">
 
                     <input
@@ -47,6 +91,7 @@ const Registation = () => {
                         placeholder="আপনার নাম"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-amber-500 outline-none"
                     />
+
                     <input
                         type="text"
                         name="photo"
@@ -83,13 +128,9 @@ const Registation = () => {
                     </button>
                 </form>
 
-                {/* Switch to Login */}
                 <p className="text-center text-sm mt-6 text-gray-600">
                     ইতিমধ্যে অ্যাকাউন্ট আছে?{' '}
-                    <Link
-                        to="/auth"
-                        className="text-amber-600 font-semibold hover:underline"
-                    >
+                    <Link to="/auth" className="text-amber-600 font-semibold hover:underline">
                         লগইন করুন
                     </Link>
                 </p>
