@@ -1,6 +1,6 @@
 import React from 'react';
 import LatestProduct from './LatestProducts/LatestProduct';
-
+import bannerImg from '../assets/banner.jpg'
 const Home = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
@@ -36,7 +36,7 @@ const Home = () => {
                 {/* IMAGE SECTION */}
                 <div className="flex-1">
                     <img
-                        src="/src/assets/banner.jpg"
+                        src={bannerImg}
                         alt="building"
                         className="w-full rounded-2xl shadow-2xl object-cover"
                     />
