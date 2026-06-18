@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import bannerImg from '../assets/banner.jpg'
+import bannerImg from '../assets/logo1.jpeg'
 const stats = [
     { value: '500+', label: 'সফল প্রজেক্ট' },
     { value: '12+', label: 'বছরের অভিজ্ঞতা' },

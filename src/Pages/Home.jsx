@@ -1,6 +1,6 @@
 import React from 'react';
 import LatestProduct from './LatestProducts/LatestProduct';
-import bannerImg from '../assets/banner.jpg'
+import bannerImg from '../assets/logo1.jpeg'
 const Home = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
