@@ -37,7 +37,7 @@ const LogIn = () => {
 
         googleLogin()
             .then(res => {
-                console.log(res.user);
+                // console.log(res.user);
                 setSuccess("Google login successful 🎉");
             })
             .catch(err => {

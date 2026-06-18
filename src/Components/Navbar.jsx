@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 
 const Navbar = () => {
@@ -46,9 +46,9 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <h2 className="text-xl font-bold text-orange-500">
+                    <Link to={'/'} className="text-xl font-bold text-orange-500 cursor-pointer">
                         Abash Builders
-                    </h2>
+                    </Link>
                 </div>
 
                 {/* CENTER */}
