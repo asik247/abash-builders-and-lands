@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-
+import bannerImg from '../assets/banner.jpg'
 const stats = [
     { value: '500+', label: 'সফল প্রজেক্ট' },
     { value: '12+', label: 'বছরের অভিজ্ঞতা' },
@@ -51,7 +51,7 @@ const About = () => {
                 {/* IMAGE */}
                 <div>
                     <img
-                        src="/src/assets/banner.jpg"
+                        src={bannerImg}
                         alt="about"
                         className="rounded-2xl shadow-2xl w-full object-cover"
                     />
