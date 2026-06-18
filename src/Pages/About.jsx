@@ -35,7 +35,7 @@ const About = () => {
                     </span>
 
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-                        Abash <span className="text-orange-500">Builders & Lands</span>
+                        B.K <span className="text-orange-500">Builders & Land</span>
                     </h1>
 
                     <p className="text-gray-600 leading-relaxed">

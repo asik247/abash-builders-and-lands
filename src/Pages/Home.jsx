@@ -13,7 +13,7 @@ const Home = () => {
 
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
                         Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">
-                            Abash Builders
+                            B.K Builders & Land
                         </span>
                     </h1>
 

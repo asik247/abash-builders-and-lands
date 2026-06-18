@@ -47,7 +47,7 @@ const Navbar = () => {
                     </div>
 
                     <Link to={'/'} className="text-xl font-bold text-orange-500 cursor-pointer">
-                        Abash Builders
+                        B.K Builders & Land
                     </Link>
                 </div>
 

@@ -55,7 +55,7 @@ const INFO = [
   {
     icon: '📧',
     label: 'ইমেইল',
-    value: 'abash.support@gmail.com',
+    value: 'bk.support@gmail.com',
     link: 'mailto:abash.support@gmail.com',
   },
 ];

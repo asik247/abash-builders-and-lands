@@ -10,7 +10,7 @@ const Footer = () => {
 
                 {/* BRAND */}
                 <div>
-                    <h2 className="text-2xl font-bold text-amber-400">Abash Builders</h2>
+                    <h2 className="text-2xl font-bold text-amber-400">B.K Builders & Land</h2>
                     <p className="text-sm text-gray-400 mt-3 leading-relaxed">
                         আপনার স্বপ্নের আবাস গড়তে আমরা আছি সবসময়। নির্ভরযোগ্য প্লট,
                         নিরাপদ বিনিয়োগ এবং আইনি নিশ্চয়তা।
@@ -42,7 +42,7 @@ const Footer = () => {
 
             {/* BOTTOM */}
             <div className="text-center mt-8 text-xs text-gray-500">
-                © {new Date().getFullYear()} Abash Builders. All Rights Reserved.
+                © {new Date().getFullYear()} B.K Builders & Land. All Rights Reserved.
             </div>
 
         </footer>
